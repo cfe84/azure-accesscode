@@ -24,7 +24,7 @@ class Authenticator {
 
   async authenticate(): Promise<string> {
     const authCodeUrl = await this.getAuthUrl();
-    console.log("Authenticate in your browser through this url: ", authCodeUrl);
+    console.warn("Authenticate in your browser through this url: ", authCodeUrl);
     open(authCodeUrl);
     const token = await this.waitForToken();
     return token;
@@ -88,7 +88,7 @@ class Authenticator {
       }, 10000);
 
       const server = app.listen(port, () => {
-        console.log(`Listening on port ${port}`);
+        console.warn(`Listening on port ${port}`);
       });
     });
   }
